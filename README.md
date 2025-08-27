@@ -1,69 +1,72 @@
-# React + TypeScript + Vite
+# Pokémon App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación simple desarrollada en React + TypeScript con Vite que permite mostrar información de un pokémon ingresado por el usuario, consumiendo la **PokéAPI**.
 
-Currently, two official plugins are available:
+Este proyecto forma parte del **Máster en Desarrollo Full Stack**, y está diseñado siguiendo los principios de **Clean Architecture**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+##  Índice
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. [Descripción](#descripción)  
+2. [Demo en Vivo](#demo-en-vivo)  
+3. [Arquitectura](#arquitectura)  
+4. [Instalación](#instalación)  
+5. [Tecnologías](#tecnologías)  
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Descripción
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+La aplicación permite al usuario buscar un pokémon por nombre o identificador y mostrar datos clave como nombre, imagen, tipos y estadísticas principales.
+
+---
+
+## Demo en Vivo
+
+Puedes acceder a la aplicación desplegada en GitHub Pages:  
+[Ver aplicación en vivo](https://gpasadasfj.github.io/pokemon-app/) :contentReference[oaicite:0]{index=0}
+
+---
+
+## Arquitectura
+
+El proyecto está estructurado siguiendo **Clean Architecture**, separando responsabilidad y capas de manera clara:
+
+- **Capa de presentación (UI):** Componentes React encargados de la interacción y visualización.
+- **Capa de dominio:** Define los modelos centrales (por ejemplo `Pokemon`, `Stats`) y las interfaces para el uso y obtención de datos.
+- **Capa de infraestructura (data):** Implementa la lógica concreta para consumir la PokéAPI y mapear datos desde la red a los modelos del dominio.
+- **Inyección de dependencias:** Permite que el dominio sea independiente de detalles concretos de la API o la presentación.
+
+Este enfoque facilita mantenimiento, testeo unitario y escalabilidad del código.
+
+---
+
+## Instalación
+
+Sigue estos pasos para ejecutarla localmente:
+
+```bash
+# Clona el repositorio
+git clone https://github.com/Gpasadasfj/pokemon-app.git
+
+# Entra al directorio del proyecto
+cd pokemon-app
+
+# Instala dependencias
+npm install  # o yarn install
+
+# Inicia el servidor de desarrollo
+npm run dev  # o yarn dev
+
+# La aplicación estará disponible en http://localhost:5173 (u otro puerto que indique Vite)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Tecnologías
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Frontend:** React + TypeScript  
+- **Bundler:** Vite  
+- **Arquitectura:** Clean Architecture (capas independientes)  
+- **API:** PokéAPI (RESTful API pública de Pokémon)  
