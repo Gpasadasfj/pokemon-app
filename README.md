@@ -25,7 +25,7 @@ La aplicación permite al usuario buscar un pokémon por nombre o identificador 
 ## Demo en Vivo
 
 Puedes acceder a la aplicación desplegada en GitHub Pages:  
-[Ver aplicación en vivo](https://gpasadasfj.github.io/pokemon-app/) :contentReference[oaicite:0]{index=0}
+[Ver aplicación en vivo](https://gpasadasfj.github.io/pokemon-app/)
 
 ---
 
